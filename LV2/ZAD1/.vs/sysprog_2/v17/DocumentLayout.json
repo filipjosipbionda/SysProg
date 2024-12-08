@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\korisnik\\Desktop\\sysprog\\LV2\\ZAD1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ADBC979B-61C3-4A22-94E1-CA7C87DD412F}|sysprog_2\\sysprog_2.vcxproj|C:\\Users\\korisnik\\Desktop\\sysprog\\LV2\\ZAD1\\sysprog_2\\sysprog_2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{ADBC979B-61C3-4A22-94E1-CA7C87DD412F}|sysprog_2\\sysprog_2.vcxproj|solutionrelative:sysprog_2\\sysprog_2.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "sysprog_2.c",
+              "DocumentMoniker": "C:\\Users\\korisnik\\Desktop\\sysprog\\LV2\\ZAD1\\sysprog_2\\sysprog_2.c",
+              "RelativeDocumentMoniker": "sysprog_2\\sysprog_2.c",
+              "ToolTip": "C:\\Users\\korisnik\\Desktop\\sysprog\\LV2\\ZAD1\\sysprog_2\\sysprog_2.c",
+              "RelativeToolTip": "sysprog_2\\sysprog_2.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-08T14:30:53.18Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
