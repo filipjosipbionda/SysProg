@@ -4,7 +4,7 @@
 #include <tchar.h>
 
 #define PATH_BUFFER_SIZE 1024
-#define LARGE_FILE_SIZE (10 * 1024 * 1024)
+#define LARGE_FILE_SIZE (1024 * 1024)
 
 int largeFilesCount = 0;
 FILETIME oldestFileTime;
@@ -27,8 +27,6 @@ void PreorderTraversal(LPTSTR path) {
         return;
     }
 
-    _tprintf(_T("Directory: %s\n"), path);
-
     do {
         if (_tcscmp(findFileData.cFileName, _T(".")) == 0 || _tcscmp(findFileData.cFileName, _T("..")) == 0) {
             continue;
@@ -41,17 +39,18 @@ void PreorderTraversal(LPTSTR path) {
             PreorderTraversal(fullPath);
         }
         else {
-            _tprintf(_T("File: %s\n"), fullPath);
-
             LARGE_INTEGER fileSize;
             fileSize.LowPart = findFileData.nFileSizeLow;
             fileSize.HighPart = findFileData.nFileSizeHigh;
+
             if (fileSize.QuadPart > LARGE_FILE_SIZE) {
                 largeFilesCount++;
             }
 
-            if (CompareFileTime(&findFileData.ftCreationTime, &oldestFileTime) < 0) {
-                oldestFileTime = findFileData.ftCreationTime;
+            if (findFileData.ftCreationTime.dwLowDateTime != 0 && findFileData.ftCreationTime.dwHighDateTime != 0) {
+                if (CompareFileTime(&findFileData.ftCreationTime, &oldestFileTime) < 0) {
+                    oldestFileTime = findFileData.ftCreationTime;
+                }
             }
         }
     } while (FindNextFile(hFind, &findFileData) != 0);
@@ -67,6 +66,11 @@ int _tmain(int argc, TCHAR* argv[]) {
 
     InitOldestFileTime();
     PreorderTraversal(argv[1]);
+
+    if (oldestFileTime.dwLowDateTime == 0xFFFFFFFF && oldestFileTime.dwHighDateTime == 0xFFFFFFFF) {
+        _tprintf(_T("No valid files found in the directory structure.\n"));
+        return 1;
+    }
 
     SYSTEMTIME oldestFileSystemTime;
     FileTimeToSystemTime(&oldestFileTime, &oldestFileSystemTime);
